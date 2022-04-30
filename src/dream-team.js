@@ -13,29 +13,16 @@ const { NotImplementedError } = require('../extensions/index.js');
  * createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null]) => 'LOO'
  *
  */
-function createDreamTeam(/* members */) {
+function createDreamTeam(members) {
   let teamName = '';
-  let members = arguments[0];
-  let namesArr = [];
-  let namesCounter = 0;
+  let stringsArr = [];
 
-  if (members) {
-    for (let i = 0; i < members.length; i++) {
-      if (typeof members[i] == 'string') {
-        let member = members[i].trim();
-        namesArr.push(member);
-        namesCounter++;
-      }
-    }
+  if (Array.isArray(members)) {
+    let stringsArr = members.map((member) => typeof member === 'string' ? member.trim().charAt(0).toUpperCase() : '');
   
-    if (namesCounter != 0) {
-      namesArr.sort();
-  
-      for (let i = 0; i < namesArr.length; i++) {
-        let name = namesArr[i].toUpperCase();
-        teamName += name.charAt(0);
-      }
-  
+    if (stringsArr.length != 0) {
+      teamName = stringsArr.sort().join('');
+
       return teamName;
       
     }
