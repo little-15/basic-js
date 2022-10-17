@@ -24,9 +24,9 @@ function repeater(str, options) {
     additionSeparator = '|',
   } = options;
 
-  let addendum = Array(additionRepeatTimes).fill(String(addition)).join(additionSeparator);
+  let addnum = Array(additionRepeatTimes).fill(String(addition)).join(additionSeparator);
   
-  let string = Array(repeatTimes).fill(`${String(str)}${addendum}`).join(separator);
+  let string = Array(repeatTimes).fill(`${String(str)}${addnum}`).join(separator);
 
   return string;
 }
